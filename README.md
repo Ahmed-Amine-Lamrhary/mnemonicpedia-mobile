@@ -1,0 +1,2 @@
+# mnemonicpedia-mobile
+ 
