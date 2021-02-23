@@ -8,6 +8,7 @@ const colors = {
   white: "#ffffff",
   black: "#000000",
   grey: "#707070",
+  lightGrey: "#95a4a6",
 };
 
 export default colors;

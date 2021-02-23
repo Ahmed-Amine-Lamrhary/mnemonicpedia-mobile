@@ -24,7 +24,6 @@ function App() {
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 20,
     paddingTop: StatusBar.currentHeight + 20,
   },
 });

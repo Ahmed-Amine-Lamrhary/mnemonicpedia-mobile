@@ -1,8 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { View, Button, TextInput, StyleSheet, FlatList } from "react-native";
+import {
+  View,
+  TextInput,
+  StyleSheet,
+  FlatList,
+  ScrollView,
+} from "react-native";
 import Mnemonic from "../components/Mnemonic";
 import Loading from "../components/Loading";
 import Nothing from "../components/Nothing";
+import AppButton from "./AppButton";
+import colors from "../utility/colors";
 
 const mnemonicsData = [
   {
@@ -121,18 +129,20 @@ function Mnemonics() {
   const [loading, setLoading] = useState(true);
   const [value, setValue] = useState("");
   const [filter, setFilter] = useState({});
+  const [isRefreshing, setIsRefreshing] = useState(false);
 
   // const history = useHistory();
   // const location = useLocation();
 
   const handleGet = async () => {
+    setIsRefreshing(true);
     setLoading(true);
 
     setTimeout(() => {
       setMnemonics(mnemonicsData);
+      setLoading(false);
+      setIsRefreshing(false);
     }, 2000);
-
-    setLoading(false);
 
     // const finalQuery = { ...query, ...filter };
     // const { search, load } = filter;
@@ -215,7 +225,7 @@ function Mnemonics() {
   };
 
   return (
-    <>
+    <ScrollView style={styles.container}>
       <View>
         <TextInput
           style={styles.searchBar}
@@ -234,6 +244,8 @@ function Mnemonics() {
             <Mnemonic mnemonic={item} onLike={handleLike} />
           )}
           keyExtractor={(index) => index._id.$oid.toString()}
+          refreshing={isRefreshing}
+          onRefresh={() => handleGet()}
         />
       )}
       {mnemonics.length === 0 && !loading && <Nothing model="mnemonic" />}
@@ -242,13 +254,21 @@ function Mnemonics() {
 
       {!loading && !reachEnd && (
         <View>
-          <Button onPress={loadMore} title="Load More" />
+          <AppButton
+            onPress={loadMore}
+            icon={{ name: "restart-line", color: colors.white }}
+          >
+            Load More
+          </AppButton>
         </View>
       )}
-    </>
+    </ScrollView>
   );
 }
 const styles = StyleSheet.create({
+  container: {
+    paddingHorizontal: 15,
+  },
   searchBar: {
     backgroundColor: "#f1f3f4",
     fontSize: 15,
@@ -257,6 +277,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     borderRadius: 7,
     height: 52,
+    marginBottom: 5,
   },
 });
 

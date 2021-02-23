@@ -1,12 +1,24 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import colors from "../utility/colors";
+import Icon from "react-native-remix-icon";
 
-function AppButton({ children, onPress }) {
+function AppButton({ children, onPress, styleBtn, styleText, icon }) {
   return (
     <View>
-      <TouchableOpacity onPress={onPress} style={styles.container}>
-        <Text style={styles.text}>{children}</Text>
+      <TouchableOpacity
+        onPress={onPress}
+        style={{ ...styles.container, ...styleBtn }}
+      >
+        {icon && (
+          <Icon
+            name={icon.name}
+            size="17"
+            color={icon.color}
+            style={{ marginRight: 8 }}
+          />
+        )}
+        <Text style={{ ...styles.text, ...styleText }}>{children}</Text>
       </TouchableOpacity>
     </View>
   );
@@ -14,16 +26,19 @@ function AppButton({ children, onPress }) {
 
 const styles = StyleSheet.create({
   container: {
-    fontSize: 15,
-    fontWeight: "400",
     borderRadius: 3,
     paddingHorizontal: 30,
     paddingVertical: 12,
     backgroundColor: colors.primary,
     alignItems: "center",
+    justifyContent: "center",
+    flexDirection: "row",
+    alignItems: "center",
   },
   text: {
     color: colors.white,
+    fontSize: 15,
+    fontWeight: "400",
   },
 });
 
