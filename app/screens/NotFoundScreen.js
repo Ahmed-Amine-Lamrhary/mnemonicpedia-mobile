@@ -1,14 +1,15 @@
 import React from "react";
-import Button from "../other/Button";
+import { Text, View } from "react-native";
+import AppButton from "../components/AppButton";
 
-function NotFound(props) {
+function NotFoundScreen(props) {
   return (
-    <div className="not-found container">
-      <h1>Page not found</h1>
-      <p>We're sorry, we couldn't find the page you requested.</p>
-      <Button to="/">Go to home page</Button>
-    </div>
+    <View>
+      <Text>Page not found</Text>
+      <Text>We're sorry, we couldn't find the page you requested.</Text>
+      <AppButton>Go to home page</AppButton>
+    </View>
   );
 }
 
-export default NotFound;
+export default NotFoundScreen;

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
+// import { register } from "../../api/auth";
+import { View } from "react-native";
+import AppButton from "../components/AppButton";
 import Form from "../forms/Form";
 import FormGroup from "../forms/FormGroup";
-import Button from "../other/Button";
-import FormNavigation from "../forms/FormNavigation";
-import { register } from "../../api/auth";
 
 function Register({ history, location }) {
   const [fullname, setFullname] = useState("");
@@ -13,52 +13,52 @@ function Register({ history, location }) {
   const [password2, setPassword2] = useState("");
 
   const handleRegister = async () => {
-    await register({ fullname, username, email, password, password2 }, history);
+    // await register({ fullname, username, email, password, password2 }, history);
   };
 
   return (
-    <div className="container">
-      <FormNavigation
+    <View>
+      {/* <FormNavigation
         links={[
           { to: "/register", text: "Register" },
           { to: "/login", text: "Log in" },
         ]}
-      />
+      /> */}
 
-      <Form onSubmit={handleRegister} location={location}>
+      <Form>
         <FormGroup
           type="text"
           label="Full Name"
           value={fullname}
-          onChange={(e) => setFullname(e.target.value)}
+          onChange={(text) => setFullname(text)}
         />
         <FormGroup
           type="text"
           label="Username"
           value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          onChange={(text) => setUsername(text)}
         />
         <FormGroup
           type="email"
           label="Email"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(text) => setEmail(text)}
         />
         <FormGroup
           type="password"
           label="Password"
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={(text) => setPassword(text)}
         />
         <FormGroup
           type="password"
           label="Repeat Password"
           value={password2}
-          onChange={(e) => setPassword2(e.target.value)}
+          onChange={(text) => setPassword2(text)}
         />
-        <Button type="submit">Register</Button>
+        <AppButton>Register</AppButton>
       </Form>
-    </div>
+    </View>
   );
 }
 

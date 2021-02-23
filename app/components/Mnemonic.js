@@ -1,8 +1,11 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
+import colors from "../utility/colors";
+import AppButton from "./AppButton";
 
 function Mnemonic({ mnemonic, onLike }) {
   const { _id, title, content, author, likes } = mnemonic;
+  const userId = "dedededede";
 
   if (!_id) return null;
 
@@ -12,7 +15,7 @@ function Mnemonic({ mnemonic, onLike }) {
         <View>
           <Text style={styles.icon}>
             {/* <i className="ri-user-line"></i> */}
-            <Text style={styles.author}>{author.fullname}</Text>
+            <Text style={styles.author}>Author name</Text>
           </Text>
         </View>
 
@@ -24,9 +27,11 @@ function Mnemonic({ mnemonic, onLike }) {
             </Text>
           )} */}
 
+          <Text>Edit Mnemonic</Text>
+
           <Text>
             {/* <i className="ri-flag-2-line"></i> */}
-            Report
+            Report User
           </Text>
         </View>
       </View>
@@ -34,61 +39,75 @@ function Mnemonic({ mnemonic, onLike }) {
       <Text style={styles.title}>{title}</Text>
 
       {/* <View dangerouslySetInnerHTML={{ __html: content }} /> */}
+      <View>
+        <Text>Mnemonic Content</Text>
+      </View>
 
-      {/* <View>
-        <Text>Helpful?</Text>
+      <View style={styles.bottom}>
+        <Text style={styles.helpful}>Helpful?</Text>
         {userId && (
-          <Button
-            bgColor={likes.includes(userId) ? "primary" : "white"}
-            onClick={() => onLike(mnemonic._id)}
-            className="mnemonic-btn"
+          <AppButton
+            // bgColor={likes.includes(userId) ? "primary" : "white"}
+            onPress={() => onLike(mnemonic._id)}
           >
-            <i className="ri-thumb-up-line"></i>
-            <span>{likes.length}</span>
-          </Button>
+            {/* <i className="ri-thumb-up-line"></i> */}
+            10
+          </AppButton>
         )}
         {!userId && (
-          <Button bgColor="white" className="mnemonic-btn" to="/login">
-            <i className="ri-thumb-up-line"></i>
-            <span>{likes.length}</span>
-          </Button>
+          <AppButton
+          // bgColor="white"
+          >
+            {/* <i className="ri-thumb-up-line"></i> */}
+            10
+          </AppButton>
         )}
-        <Button bgColor="white" className="mnemonic-btn">
-          <i className="ri-share-forward-line"></i> Share
-        </Button>
-      </View> */}
+        <AppButton
+        // bgColor="white"
+        >
+          {/* <i className="ri-share-forward-line"></i>  */}
+          Share
+        </AppButton>
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    paddingVertical: 26,
-    paddingHorizontal: 40,
+    padding: 15,
     borderStyle: "solid",
     borderColor: "#f1f3f4",
     borderWidth: 1,
     borderRadius: 8,
-    marginVertical: 20,
+    marginVertical: 10,
   },
   options: {},
   title: {
     fontSize: 18,
+    fontWeight: "bold",
     lineHeight: 23,
+    color: colors.primary,
   },
-  helpful: {},
+  helpful: {
+    fontWeight: "bold",
+    marginRight: 10,
+  },
   button: {},
   author: {
     fontSize: 14,
     fontWeight: "500",
     justifyContent: "center",
     alignItems: "center",
-    marginLeft: 6,
   },
   icon: {
     color: "#919292",
     fontSize: 18,
     marginLeft: 13,
+  },
+  bottom: {
+    flexDirection: "row",
+    alignItems: "center",
   },
 });
 

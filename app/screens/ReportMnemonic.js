@@ -1,22 +1,22 @@
 import React, { useEffect, useState } from "react";
-import { getMnemonic } from "../../api/mnemonic";
-import { reportMnemonic } from "../../api/report";
+import AppButton from "../components/AppButton";
 import Form from "../forms/Form";
 import FormGroup from "../forms/FormGroup";
-import Button from "../other/Button";
+// import { getMnemonic } from "../../api/mnemonic";
+// import { reportMnemonic } from "../../api/report";
 
-function ReportMnemonic({ history, match, location }) {
+function ReportMnemonic() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const { params } = match;
+  // const { params } = match;
 
   const handleGetMnemonic = async () => {
-    try {
-      await getMnemonic(params.id);
-    } catch (error) {
-      console.error(error);
-      history.push("/notFound");
-    }
+    // try {
+    //   await getMnemonic(params.id);
+    // } catch (error) {
+    //   console.error(error);
+    //   history.push("/notFound");
+    // }
   };
 
   useEffect(() => {
@@ -24,27 +24,25 @@ function ReportMnemonic({ history, match, location }) {
   }, []);
 
   const handleReport = async () => {
-    await reportMnemonic({ _id: params.id, title, content });
+    // await reportMnemonic({ _id: params.id, title, content });
   };
 
   return (
-    <div>
-      <Form onSubmit={handleReport} location={location}>
-        <FormGroup
-          type="text"
-          label="Title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        <FormGroup
-          type="text"
-          label="Content"
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-        />
-        <Button type="submit">Report</Button>
-      </Form>
-    </div>
+    <Form>
+      <FormGroup
+        type="text"
+        label="Title"
+        value={title}
+        onChange={(text) => setTitle(text)}
+      />
+      <FormGroup
+        type="text"
+        label="Content"
+        value={content}
+        onChange={(text) => setContent(text)}
+      />
+      <AppButton>Report</AppButton>
+    </Form>
   );
 }
 

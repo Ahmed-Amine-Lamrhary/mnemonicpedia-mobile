@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, Button, TextInput, StyleSheet } from "react-native";
+import { View, Button, TextInput, StyleSheet, FlatList } from "react-native";
 import Mnemonic from "../components/Mnemonic";
 import Loading from "../components/Loading";
 import Nothing from "../components/Nothing";
@@ -228,11 +228,13 @@ function Mnemonics() {
       </View>
 
       {mnemonics.length > 0 && (
-        <>
-          {mnemonics.map((mnemonic, index) => (
-            <Mnemonic key={index} mnemonic={mnemonic} onLike={handleLike} />
-          ))}
-        </>
+        <FlatList
+          data={mnemonics}
+          renderItem={({ item }) => (
+            <Mnemonic mnemonic={item} onLike={handleLike} />
+          )}
+          keyExtractor={(index) => index._id.$oid.toString()}
+        />
       )}
       {mnemonics.length === 0 && !loading && <Nothing model="mnemonic" />}
 

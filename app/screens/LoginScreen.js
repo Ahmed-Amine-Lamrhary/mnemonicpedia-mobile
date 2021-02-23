@@ -1,55 +1,53 @@
 import React, { useState } from "react";
+import { View } from "react-native";
+import AppButton from "../components/AppButton";
 import Form from "../forms/Form";
-import FormGroup from "../forms/FormGroup";
-import { login } from "../../api/auth";
 import FormCheck from "../forms/FormCheck";
-import Button from "../other/Button";
+import FormGroup from "../forms/FormGroup";
 import FormNavigation from "../forms/FormNavigation";
 
-function Login({ history, location }) {
+function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [keepLogin, setKeepLogin] = useState(false);
 
-  const { state } = location;
+  // const { state } = location;
 
   const handleLogin = async () => {
-    if (state && state.from)
-      return await login({ email, password, keepLogin }, history, state.from);
-
-    const loginStatus = await login({ email, password, keepLogin }, history);
-
-    if (!loginStatus) {
-      history.push({
-        pathname: "/activate",
-        state: {
-          email,
-        },
-      });
-    }
+    // if (state && state.from)
+    //   return await login({ email, password, keepLogin }, history, state.from);
+    // const loginStatus = await login({ email, password, keepLogin }, history);
+    // if (!loginStatus) {
+    //   history.push({
+    //     pathname: "/activate",
+    //     state: {
+    //       email,
+    //     },
+    //   });
+    // }
   };
 
   return (
-    <div className="container">
-      <FormNavigation
+    <View>
+      {/* <FormNavigation
         links={[
           { to: "/register", text: "Register" },
           { to: "/login", text: "Log in" },
         ]}
-      />
+      /> */}
 
-      <Form onSubmit={handleLogin} location={location}>
+      <Form>
         <FormGroup
           type="email"
           label="Email"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(text) => setEmail(text)}
         />
         <FormGroup
           type="password"
           label="Password"
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={(text) => setPassword(text)}
         />
 
         <FormCheck
@@ -59,9 +57,9 @@ function Login({ history, location }) {
           onChange={() => setKeepLogin(!keepLogin)}
         />
 
-        <Button type="submit">Login</Button>
+        <AppButton onPress={handleLogin}>Login</AppButton>
       </Form>
-    </div>
+    </View>
   );
 }
 
