@@ -1,14 +1,18 @@
 import React from "react";
-import { Text, View } from "react-native";
 import AppButton from "../components/AppButton";
+import Container from "../components/Container";
+import Heading from "../components/Heading";
+import Paragraph from "../components/Paragraph";
 
 function NotFoundScreen(props) {
   return (
-    <View>
-      <Text>Page not found</Text>
-      <Text>We're sorry, we couldn't find the page you requested.</Text>
+    <Container>
+      <Heading>Page not found</Heading>
+      <Paragraph>
+        We're sorry, we couldn't find the page you requested.
+      </Paragraph>
       <AppButton>Go to home page</AppButton>
-    </View>
+    </Container>
   );
 }
 

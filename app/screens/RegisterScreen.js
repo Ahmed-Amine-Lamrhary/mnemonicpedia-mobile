@@ -2,6 +2,8 @@ import React, { useState } from "react";
 // import { register } from "../../api/auth";
 import { View } from "react-native";
 import AppButton from "../components/AppButton";
+import Container from "../components/Container";
+import Navbar from "../components/Navbar";
 import Form from "../forms/Form";
 import FormGroup from "../forms/FormGroup";
 
@@ -17,7 +19,8 @@ function Register({ history, location }) {
   };
 
   return (
-    <View>
+    <Container>
+      <Navbar />
       {/* <FormNavigation
         links={[
           { to: "/register", text: "Register" },
@@ -58,7 +61,7 @@ function Register({ history, location }) {
         />
         <AppButton>Register</AppButton>
       </Form>
-    </View>
+    </Container>
   );
 }
 

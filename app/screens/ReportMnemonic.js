@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import AppButton from "../components/AppButton";
+import Container from "../components/Container";
 import Form from "../forms/Form";
 import FormGroup from "../forms/FormGroup";
 // import { getMnemonic } from "../../api/mnemonic";
@@ -28,21 +29,23 @@ function ReportMnemonic() {
   };
 
   return (
-    <Form>
-      <FormGroup
-        type="text"
-        label="Title"
-        value={title}
-        onChange={(text) => setTitle(text)}
-      />
-      <FormGroup
-        type="text"
-        label="Content"
-        value={content}
-        onChange={(text) => setContent(text)}
-      />
-      <AppButton>Report</AppButton>
-    </Form>
+    <Container>
+      <Form>
+        <FormGroup
+          type="text"
+          label="Title"
+          value={title}
+          onChange={(text) => setTitle(text)}
+        />
+        <FormGroup
+          type="text"
+          label="Content"
+          value={content}
+          onChange={(text) => setContent(text)}
+        />
+        <AppButton>Report Mnemonic</AppButton>
+      </Form>
+    </Container>
   );
 }
 

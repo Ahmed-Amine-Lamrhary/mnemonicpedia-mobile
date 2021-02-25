@@ -18,11 +18,11 @@ function Form({ children }) {
   };
 
   return (
-    <>
+    <View>
       <Loading loading={loading} />
 
       <View>{children}</View>
-    </>
+    </View>
   );
 }
 

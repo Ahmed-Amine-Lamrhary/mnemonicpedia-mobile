@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { View } from "react-native";
 import AppButton from "../components/AppButton";
+import Container from "../components/Container";
+import Navbar from "../components/Navbar";
 import Form from "../forms/Form";
 import FormCheck from "../forms/FormCheck";
 import FormGroup from "../forms/FormGroup";
@@ -28,7 +30,8 @@ function Login() {
   };
 
   return (
-    <View>
+    <Container>
+      <Navbar />
       {/* <FormNavigation
         links={[
           { to: "/register", text: "Register" },
@@ -59,7 +62,7 @@ function Login() {
 
         <AppButton onPress={handleLogin}>Login</AppButton>
       </Form>
-    </View>
+    </Container>
   );
 }
 

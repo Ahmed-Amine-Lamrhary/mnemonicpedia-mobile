@@ -1,16 +1,11 @@
 import React, { useEffect, useState } from "react";
-import {
-  View,
-  TextInput,
-  StyleSheet,
-  FlatList,
-  ScrollView,
-} from "react-native";
+import { View, TextInput, StyleSheet, FlatList } from "react-native";
 import Mnemonic from "../components/Mnemonic";
 import Loading from "../components/Loading";
 import Nothing from "../components/Nothing";
 import AppButton from "./AppButton";
 import colors from "../utility/colors";
+import Container from "./Container";
 
 const mnemonicsData = [
   {
@@ -123,7 +118,7 @@ const mnemonicsData = [
   },
 ];
 
-function Mnemonics() {
+function Mnemonics(props) {
   const [mnemonics, setMnemonics] = useState([]);
   const [reachEnd, setReachEnd] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -225,7 +220,7 @@ function Mnemonics() {
   };
 
   return (
-    <ScrollView style={styles.container}>
+    <View>
       <View>
         <TextInput
           style={styles.searchBar}
@@ -262,13 +257,10 @@ function Mnemonics() {
           </AppButton>
         </View>
       )}
-    </ScrollView>
+    </View>
   );
 }
 const styles = StyleSheet.create({
-  container: {
-    paddingHorizontal: 15,
-  },
   searchBar: {
     backgroundColor: "#f1f3f4",
     fontSize: 15,

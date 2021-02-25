@@ -1,12 +1,14 @@
 import React from "react";
 import Mnemonics from "../components/Mnemonics";
-import { View } from "react-native";
+import Container from "../components/Container";
+import Navbar from "../components/Navbar";
 
 function Home(props) {
   return (
-    <View>
+    <Container>
+      <Navbar />
       <Mnemonics />
-    </View>
+    </Container>
   );
 }
 

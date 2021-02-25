@@ -1,81 +1,100 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import colors from "../utility/colors";
 import AppButton from "./AppButton";
 import Icon from "react-native-remix-icon";
+import { useNavigation } from "@react-navigation/native";
 
 function Mnemonic({ mnemonic, onLike }) {
+  const navigation = useNavigation();
   const { _id, title, content, author, likes } = mnemonic;
   const userId = "dedededede";
 
   if (!_id) return null;
 
   return (
-    <View style={styles.container}>
-      <View style={styles.options}>
-        <View style={styles.optionsBlock}>
-          <Icon name="user-line" size="17" color={colors.grey} />
-          <Text style={styles.author}>Author name</Text>
-        </View>
+    <TouchableOpacity
+      style={styles.container}
+      onPress={() =>
+        navigation.navigate("Home", {
+          screen: "MnemonicScreen",
+          params: { mnemonic },
+        })
+      }
+    >
+      <View>
+        <View style={styles.options}>
+          <View style={styles.optionsBlock}>
+            <Icon name="user-line" size="17" color={colors.grey} />
+            <Text style={styles.author}>Author name</Text>
+          </View>
 
-        <View style={styles.optionsBlock}>
-          {/* {userId === author._id && (
+          <View style={styles.optionsBlock}>
+            {/* {userId === author._id && (
             <Text>
               Edit
               <i className="ri-pencil-line"></i>
             </Text>
           )} */}
 
-          <Text style={{ marginRight: 8 }}>
-            <Icon name="pencil-line" size="20" color={colors.grey} />
-          </Text>
+            <TouchableOpacity style={{ marginRight: 8 }}>
+              <Icon name="pencil-line" size="20" color={colors.grey} />
+            </TouchableOpacity>
 
-          <Text>
-            <Icon name="flag-2-line" size="20" color={colors.grey} />
-          </Text>
+            <TouchableOpacity
+              onPress={() =>
+                navigation.navigate("Home", {
+                  screen: "ReportMnemonic",
+                  params: { mnemonic },
+                })
+              }
+            >
+              <Icon name="flag-2-line" size="20" color={colors.grey} />
+            </TouchableOpacity>
+          </View>
         </View>
-      </View>
 
-      <Text style={styles.title}>{title}</Text>
+        <Text style={styles.title}>{title}</Text>
 
-      {/* <View dangerouslySetInnerHTML={{ __html: content }} /> */}
-      <View>
-        <Text>Mnemonic Content</Text>
-      </View>
+        {/* <View dangerouslySetInnerHTML={{ __html: content }} /> */}
+        <View>
+          <Text>{content}</Text>
+        </View>
 
-      <View style={styles.bottom}>
-        <Text style={styles.helpful}>Helpful?</Text>
-        {userId && (
+        <View style={styles.bottom}>
+          <Text style={styles.helpful}>Helpful?</Text>
+          {userId && (
+            <AppButton
+              // bgColor={likes.includes(userId) ? "primary" : "white"}
+              styleBtn={styles.button}
+              styleText={styles.buttonText}
+              onPress={() => onLike(mnemonic._id)}
+              icon={{ name: "thumb-up-line", color: colors.grey }}
+            >
+              10
+            </AppButton>
+          )}
+          {!userId && (
+            <AppButton
+              styleBtn={styles.button}
+              styleText={styles.buttonText}
+              icon={{ name: "thumb-up-line", color: colors.grey }}
+              // bgColor="white"
+            >
+              10
+            </AppButton>
+          )}
           <AppButton
-            // bgColor={likes.includes(userId) ? "primary" : "white"}
             styleBtn={styles.button}
             styleText={styles.buttonText}
-            onPress={() => onLike(mnemonic._id)}
-            icon={{ name: "thumb-up-line", color: colors.grey }}
-          >
-            10
-          </AppButton>
-        )}
-        {!userId && (
-          <AppButton
-            styleBtn={styles.button}
-            styleText={styles.buttonText}
-            icon={{ name: "thumb-up-line", color: colors.grey }}
+            icon={{ name: "share-forward-line", color: colors.grey }}
             // bgColor="white"
           >
-            10
+            Share
           </AppButton>
-        )}
-        <AppButton
-          styleBtn={styles.button}
-          styleText={styles.buttonText}
-          icon={{ name: "share-forward-line", color: colors.grey }}
-          // bgColor="white"
-        >
-          Share
-        </AppButton>
+        </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }
 

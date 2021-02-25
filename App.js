@@ -1,23 +1,15 @@
 import React from "react";
 import { StyleSheet, View, StatusBar } from "react-native";
-import HomeScreen from "./app/screens/HomeScreen";
-import LoginScreen from "./app/screens/LoginScreen";
-import MnemonicScreen from "./app/screens/MnemonicScreen";
-import RegisterScreen from "./app/screens/RegisterScreen";
-import NotFoundScreen from "./app/screens/NotFoundScreen";
-import ReportMnemonic from "./app/screens/ReportMnemonic";
-import ReportUser from "./app/screens/ReportUser";
+import { NavigationContainer } from "@react-navigation/native";
+import NavigationTheme from "./app/utility/NavigationTheme";
+import SidebarNavigation from "./app/navigations/SidebarNavigation";
 
 function App() {
   return (
     <View style={styles.container}>
-      <HomeScreen />
-      {/* <LoginScreen /> */}
-      {/* <RegisterScreen /> */}
-      {/* <MnemonicScreen /> */}
-      {/* <NotFoundScreen /> */}
-      {/* <ReportMnemonic /> */}
-      {/* <ReportUser /> */}
+      <NavigationContainer theme={NavigationTheme}>
+        <SidebarNavigation />
+      </NavigationContainer>
     </View>
   );
 }
@@ -25,6 +17,8 @@ function App() {
 const styles = StyleSheet.create({
   container: {
     paddingTop: StatusBar.currentHeight + 20,
+    paddingBottom: 20,
+    height: "100%",
   },
 });
 
