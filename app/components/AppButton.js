@@ -1,12 +1,13 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import colors from "../utility/colors";
 import Icon from "react-native-remix-icon";
+import { BaseButton } from "react-native-gesture-handler";
 
 function AppButton({ children, onPress, styleBtn, styleText, icon }) {
   return (
     <View>
-      <TouchableOpacity
+      <BaseButton
         onPress={onPress}
         style={{ ...styles.container, ...styleBtn }}
       >
@@ -19,7 +20,7 @@ function AppButton({ children, onPress, styleBtn, styleText, icon }) {
           />
         )}
         <Text style={{ ...styles.text, ...styleText }}>{children}</Text>
-      </TouchableOpacity>
+      </BaseButton>
     </View>
   );
 }

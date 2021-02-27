@@ -4,6 +4,9 @@ import Container from "../components/Container";
 // import { getUser } from "../../api/user";
 import Mnemonics from "../components/Mnemonics";
 
+import { NavigationContainer } from "@react-navigation/native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+
 function User(props) {
   const [user, setUser] = useState({});
 
@@ -42,19 +45,10 @@ function User(props) {
 
   return (
     <Container>
-      {/* <Navs navs={navs()} /> */}
-
       <View>
         <Text>{fullname}</Text>
         <Text>@{username}</Text>
       </View>
-
-      {/* <Switch>
-        <Route
-          path="/user/:id/posts"
-          render={() => <Mnemonics query={{ author: params.id }} />}
-        />
-      </Switch> */}
     </Container>
   );
 }

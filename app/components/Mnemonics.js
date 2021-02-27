@@ -6,6 +6,7 @@ import Nothing from "../components/Nothing";
 import AppButton from "./AppButton";
 import colors from "../utility/colors";
 import Container from "./Container";
+import AppSeparator from "./AppSeparator";
 
 const mnemonicsData = [
   {
@@ -221,7 +222,7 @@ function Mnemonics(props) {
 
   return (
     <View>
-      <View>
+      {/* <View>
         <TextInput
           style={styles.searchBar}
           type="words"
@@ -229,8 +230,8 @@ function Mnemonics(props) {
           value={value}
           onChangeText={(text) => setValue(text)}
         />
-        {/* {value && <Button onPress={revertSearch} title="close" />} */}
-      </View>
+        {value && <Button onPress={revertSearch} title="close" />}
+      </View> */}
 
       {mnemonics.length > 0 && (
         <FlatList
@@ -241,13 +242,14 @@ function Mnemonics(props) {
           keyExtractor={(index) => index._id.$oid.toString()}
           refreshing={isRefreshing}
           onRefresh={() => handleGet()}
+          ItemSeparatorComponent={() => <AppSeparator />}
         />
       )}
       {mnemonics.length === 0 && !loading && <Nothing model="mnemonic" />}
 
       <Loading loading={loading} />
 
-      {!loading && !reachEnd && (
+      {/* {!loading && !reachEnd && (
         <View>
           <AppButton
             onPress={loadMore}
@@ -256,7 +258,7 @@ function Mnemonics(props) {
             Load More
           </AppButton>
         </View>
-      )}
+      )} */}
     </View>
   );
 }

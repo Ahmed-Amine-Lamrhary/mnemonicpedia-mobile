@@ -1,30 +1,18 @@
 import React, { useState } from "react";
-// import { register } from "../../api/auth";
-import AppButton from "../components/AppButton";
-import Container from "../components/Container";
-import Form from "../forms/Form";
-import FormGroup from "../forms/FormGroup";
+import { View, StyleSheet } from "react-native";
+import AppButton from "../../components/AppButton";
+import Form from "../../forms/Form";
+import FormGroup from "../../forms/FormGroup";
 
-function Register(props) {
+function UserSettings(props) {
   const [fullname, setFullname] = useState("");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
 
-  const handleRegister = async () => {
-    // await register({ fullname, username, email, password, password2 }, history);
-  };
-
   return (
-    <Container>
-      {/* <FormNavigation
-        links={[
-          { to: "/register", text: "Register" },
-          { to: "/login", text: "Log in" },
-        ]}
-      /> */}
-
+    <View>
       <Form>
         <FormGroup
           type="text"
@@ -58,8 +46,8 @@ function Register(props) {
         />
         <AppButton>Register</AppButton>
       </Form>
-    </Container>
+    </View>
   );
 }
 
-export default Register;
+export default UserSettings;
