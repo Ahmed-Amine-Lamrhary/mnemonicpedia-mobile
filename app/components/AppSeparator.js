@@ -9,8 +9,7 @@ function AppSeparator(props) {
 const styles = StyleSheet.create({
   container: {
     width: "100%",
-    height: 1,
-    backgroundColor: colors.light,
+    height: 15,
   },
 });
 

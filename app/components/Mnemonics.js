@@ -16,7 +16,7 @@ const mnemonicsData = [
     isPublished: true,
     likes: [],
     categories: ["60107036ccf8a13720c82f41", "60214a39015f8443c0cd3efe"],
-    title: "test test",
+    title: "Inspiration for New Projects Can Be Found",
     content: "test test test",
     author: {
       $oid: "6005768d61f1a14c04582570",
@@ -97,6 +97,75 @@ const mnemonicsData = [
   {
     _id: {
       $oid: "6015b903a3bb691f10dd8cd3",
+    },
+    isPublished: true,
+    likes: [],
+    categories: [
+      {
+        $oid: "60107036ccf8a13720c82f41",
+      },
+      {
+        $oid: "601071da5ccb201fd4b24f90",
+      },
+    ],
+    title: "Hello world",
+    content: "Hello world Hello world Hello world",
+    author: {
+      $oid: "601599b79893d022b0c43c94",
+    },
+    dateCreated: {
+      $date: "2021-01-30T19:52:35.235Z",
+    },
+  },
+  {
+    _id: {
+      $oid: "6015b903a3bb691f10dd8cd4",
+    },
+    isPublished: true,
+    likes: [],
+    categories: [
+      {
+        $oid: "60107036ccf8a13720c82f41",
+      },
+      {
+        $oid: "601071da5ccb201fd4b24f90",
+      },
+    ],
+    title: "Hello world",
+    content: "Hello world Hello world Hello world",
+    author: {
+      $oid: "601599b79893d022b0c43c94",
+    },
+    dateCreated: {
+      $date: "2021-01-30T19:52:35.235Z",
+    },
+  },
+  {
+    _id: {
+      $oid: "6015b903a3bb691f10dd8cd5",
+    },
+    isPublished: true,
+    likes: [],
+    categories: [
+      {
+        $oid: "60107036ccf8a13720c82f41",
+      },
+      {
+        $oid: "601071da5ccb201fd4b24f90",
+      },
+    ],
+    title: "Hello world",
+    content: "Hello world Hello world Hello world",
+    author: {
+      $oid: "601599b79893d022b0c43c94",
+    },
+    dateCreated: {
+      $date: "2021-01-30T19:52:35.235Z",
+    },
+  },
+  {
+    _id: {
+      $oid: "6015b903a3bb691f10dd8cd6",
     },
     isPublished: true,
     likes: [],

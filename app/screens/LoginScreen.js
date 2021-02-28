@@ -28,6 +28,10 @@ function Login() {
     // }
   };
 
+  const handleCheck = () => {
+    setKeepLogin(!keepLogin);
+  };
+
   return (
     <Container>
       {/* <FormNavigation
@@ -55,6 +59,7 @@ function Login() {
           label="Keep me logged in"
           id="keepLogin"
           checked={keepLogin}
+          check={handleCheck}
           onChange={() => setKeepLogin(!keepLogin)}
         />
 

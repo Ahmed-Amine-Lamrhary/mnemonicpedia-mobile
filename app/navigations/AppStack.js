@@ -1,7 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import Icon from "react-native-remix-icon";
-import AppTouchable from "../components/AppTouchable";
+import AppIcon from "../components/AppIcon";
 import colors from "../utility/colors";
 
 function AppStack({ children, stack: Stack }) {
@@ -10,34 +9,43 @@ function AppStack({ children, stack: Stack }) {
       <View style={styles.headerContainer}>
         <View style={styles.headerContainerLeft}>
           {navigation.dangerouslyGetState().routes.length === 1 && (
-            <AppTouchable
+            <AppIcon
               onPress={() => navigation.openDrawer()}
-              underlayColor={colors.white}
               style={{ marginRight: 10 }}
-            >
-              <Icon name="menu-fill" size="24" color={colors.white} />
-            </AppTouchable>
+              rippleColor={colors.black}
+              icon={{
+                name: "menu-2-fill",
+                size: "30",
+                color: colors.black,
+              }}
+            />
           )}
           {navigation.dangerouslyGetState().routes.length > 1 && (
-            <AppTouchable
+            <AppIcon
               onPress={() => navigation.goBack()}
-              underlayColor={colors.white}
               style={{ marginRight: 10 }}
-            >
-              <Icon name="arrow-left-line" size="24" color={colors.white} />
-            </AppTouchable>
+              rippleColor={colors.black}
+              icon={{
+                name: "arrow-left-line",
+                size: "24",
+                color: colors.black,
+              }}
+            />
           )}
           <Text style={styles.headerTitle}>
             {route.params ? route.params.mnemonic.title : route.name}
           </Text>
         </View>
         <View>
-          <AppTouchable
+          <AppIcon
             onPress={() => console.log("search")}
-            underlayColor={colors.white}
-          >
-            <Icon name="search-line" size="22" color={colors.white} />
-          </AppTouchable>
+            rippleColor={colors.black}
+            icon={{
+              name: "search-line",
+              size: "25",
+              color: colors.black,
+            }}
+          />
         </View>
       </View>
     );
@@ -61,14 +69,15 @@ function AppStack({ children, stack: Stack }) {
 
 const styles = StyleSheet.create({
   header: {
-    backgroundColor: colors.primary,
+    backgroundColor: colors.light,
     height: 100,
+    elevation: 0,
   },
   headerTitle: {
     fontSize: 17,
     fontWeight: "bold",
     marginLeft: 2,
-    color: colors.white,
+    color: colors.lightGrey,
   },
   headerContainer: {
     flexDirection: "row",

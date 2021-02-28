@@ -1,5 +1,6 @@
 import React from "react";
 import { StyleSheet, TextInput, View } from "react-native";
+import colors from "../utility/colors";
 
 function FormGroup({ type, label, value, onChange }) {
   return (
@@ -21,9 +22,7 @@ const styles = StyleSheet.create({
   },
   textInput: {
     borderRadius: 3,
-    borderWidth: 1,
-    borderStyle: "solid",
-    borderColor: "#d0d0d0",
+    backgroundColor: colors.white,
     paddingHorizontal: 12,
     paddingVertical: 14,
     fontSize: 14,

@@ -4,9 +4,9 @@ const colors = {
   success: "#28a745",
   danger: "#dc3545",
   warning: "#ffc107",
-  light: "#eaf2fd",
+  light: "#f9f9f9",
   white: "#ffffff",
-  black: "#000000",
+  black: "#2c2d30",
   grey: "#707070",
   lightGrey: "#95a4a6",
 };
