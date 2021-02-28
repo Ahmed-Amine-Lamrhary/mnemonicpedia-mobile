@@ -5,7 +5,7 @@ import Container from "../components/Container";
 import Form from "../forms/Form";
 import FormCheck from "../forms/FormCheck";
 import FormGroup from "../forms/FormGroup";
-import FormNavigation from "../forms/FormNavigation";
+import Screen from "./Screen";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -33,7 +33,7 @@ function Login() {
   };
 
   return (
-    <Container>
+    <Screen>
       {/* <FormNavigation
         links={[
           { to: "/register", text: "Register" },
@@ -65,7 +65,7 @@ function Login() {
 
         <AppButton onPress={handleLogin}>Login</AppButton>
       </Form>
-    </Container>
+    </Screen>
   );
 }
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import AppButton from "../components/AppButton";
-import Container from "../components/Container";
+import Screen from "./Screen";
 import Form from "../forms/Form";
 import FormGroup from "../forms/FormGroup";
 // import { getMnemonic } from "../../api/mnemonic";
@@ -29,7 +29,7 @@ function ReportMnemonic() {
   };
 
   return (
-    <Container>
+    <Screen>
       <Form>
         <FormGroup
           type="text"
@@ -45,7 +45,7 @@ function ReportMnemonic() {
         />
         <AppButton>Report Mnemonic</AppButton>
       </Form>
-    </Container>
+    </Screen>
   );
 }
 

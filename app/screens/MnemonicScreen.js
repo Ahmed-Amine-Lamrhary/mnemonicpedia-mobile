@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
-import Container from "../components/Container";
 // import { getMnemonic } from "../../api/mnemonic";
 import Heading from "../components/Heading";
 import colors from "../utility/colors";
 import Icon from "react-native-remix-icon";
+import Screen from "./Screen";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 function MnemonicScreen() {
   const [mnemonic, setMnemonic] = useState({});
@@ -43,12 +44,14 @@ function MnemonicScreen() {
   }, []);
 
   return (
-    <Container>
+    <Screen color="white">
       <Heading>{mnemonic.title}</Heading>
-      <View style={styles.infoUnit}>
-        <Icon name="user-3-line" size={15} color={colors.lightGrey} />
-        <Text style={{ marginLeft: 5 }}>Christina</Text>
-      </View>
+      <TouchableOpacity onPress={() => console.log("hello")}>
+        <View style={styles.infoUnit}>
+          <Icon name="user-3-line" size={15} color={colors.lightGrey} />
+          <Text style={{ marginLeft: 5 }}>Christina</Text>
+        </View>
+      </TouchableOpacity>
       <Image
         style={styles.previewImage}
         source={{
@@ -59,7 +62,7 @@ function MnemonicScreen() {
       <View style={styles.contentContainer}>
         <Text style={styles.contentText}>{mnemonic.content}</Text>
       </View>
-    </Container>
+    </Screen>
   );
 }
 

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 // import { register } from "../../api/auth";
 import AppButton from "../components/AppButton";
-import Container from "../components/Container";
+import Screen from "./Screen";
 import Form from "../forms/Form";
 import FormGroup from "../forms/FormGroup";
 
@@ -17,7 +17,7 @@ function Register(props) {
   };
 
   return (
-    <Container>
+    <Screen>
       {/* <FormNavigation
         links={[
           { to: "/register", text: "Register" },
@@ -58,7 +58,7 @@ function Register(props) {
         />
         <AppButton>Register</AppButton>
       </Form>
-    </Container>
+    </Screen>
   );
 }
 

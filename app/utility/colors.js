@@ -4,7 +4,7 @@ const colors = {
   success: "#28a745",
   danger: "#dc3545",
   warning: "#ffc107",
-  light: "#f9f9f9",
+  light: "#f1efef",
   white: "#ffffff",
   black: "#2c2d30",
   grey: "#707070",

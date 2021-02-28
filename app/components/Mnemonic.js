@@ -26,6 +26,16 @@ function Mnemonic({ mnemonic, onLike }) {
     _menu.show();
   };
 
+  const goToReport = () => {
+    hideMenu();
+    navigation.navigate("Report Mnemonic");
+  };
+
+  const goToEdit = () => {
+    hideMenu();
+    navigation.navigate("Report User");
+  };
+
   if (!_id) return null;
 
   return (
@@ -135,6 +145,7 @@ function Mnemonic({ mnemonic, onLike }) {
               button={
                 <AppIcon
                   onPress={showMenu}
+                  style={{ width: 30, height: 30 }}
                   icon={{
                     name: "more-fill",
                     size: "20",
@@ -143,8 +154,8 @@ function Mnemonic({ mnemonic, onLike }) {
                 />
               }
             >
-              <MenuItem onPress={hideMenu}>Report</MenuItem>
-              <MenuItem onPress={hideMenu}>Edit</MenuItem>
+              <MenuItem onPress={goToReport}>Report</MenuItem>
+              <MenuItem onPress={goToEdit}>Edit</MenuItem>
             </Menu>
           </View>
         </View>
@@ -155,11 +166,9 @@ function Mnemonic({ mnemonic, onLike }) {
 
 const styles = StyleSheet.create({
   container: {
-    // paddingVertical: 15,
-    // paddingHorizontal: 15,
     backgroundColor: colors.white,
-    borderRadius: 15,
-    padding: 15,
+    paddingVertical: 20,
+    paddingHorizontal: 15,
   },
   options: {
     flexDirection: "row",
@@ -172,7 +181,7 @@ const styles = StyleSheet.create({
   },
   image: {
     width: 100,
-    height: 105,
+    height: 100,
     backgroundColor: colors.lightGrey,
     borderRadius: 12,
     marginRight: 15,

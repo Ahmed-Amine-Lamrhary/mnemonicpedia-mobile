@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import AppButton from "../components/AppButton";
-import Container from "../components/Container";
+import Screen from "./Screen";
 import Form from "../forms/Form";
 import FormGroup from "../forms/FormGroup";
 // import { getUser } from "../../api/user";
@@ -29,7 +29,7 @@ function ReportUser() {
   };
 
   return (
-    <Container>
+    <Screen>
       <Form>
         <FormGroup
           type="text"
@@ -45,7 +45,7 @@ function ReportUser() {
         />
         <AppButton>Report User</AppButton>
       </Form>
-    </Container>
+    </Screen>
   );
 }
 

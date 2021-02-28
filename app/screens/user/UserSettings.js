@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { View, StyleSheet } from "react-native";
 import AppButton from "../../components/AppButton";
 import Form from "../../forms/Form";
 import FormGroup from "../../forms/FormGroup";
+import Screen from "../Screen";
 
 function UserSettings(props) {
   const [fullname, setFullname] = useState("");
@@ -12,7 +12,7 @@ function UserSettings(props) {
   const [password2, setPassword2] = useState("");
 
   return (
-    <View>
+    <Screen>
       <Form>
         <FormGroup
           type="text"
@@ -44,9 +44,9 @@ function UserSettings(props) {
           value={password2}
           onChange={(text) => setPassword2(text)}
         />
-        <AppButton>Register</AppButton>
+        <AppButton>Update</AppButton>
       </Form>
-    </View>
+    </Screen>
   );
 }
 
