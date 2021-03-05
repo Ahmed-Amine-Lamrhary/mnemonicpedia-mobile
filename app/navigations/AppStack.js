@@ -4,59 +4,57 @@ import AppIcon from "../components/AppIcon";
 import colors from "../utility/colors";
 
 function AppStack({ children, stack: Stack }) {
-  const HeaderTitle = ({ navigation, route }) => {
-    return (
-      <View style={styles.headerContainer}>
-        <View style={styles.headerContainerLeft}>
-          {navigation.dangerouslyGetState().routes.length === 1 && (
-            <AppIcon
-              onPress={() => navigation.openDrawer()}
-              style={{ marginRight: 10 }}
-              rippleColor={colors.black}
-              icon={{
-                name: "menu-2-fill",
-                size: "30",
-                color: colors.black,
-              }}
-            />
-          )}
-          {navigation.dangerouslyGetState().routes.length > 1 && (
-            <AppIcon
-              onPress={() => navigation.goBack()}
-              style={{ marginRight: 10 }}
-              rippleColor={colors.black}
-              icon={{
-                name: "arrow-left-line",
-                size: "24",
-                color: colors.black,
-              }}
-            />
-          )}
-          <Text style={styles.headerTitle}>
-            {route.params ? route.params.mnemonic.title : route.name}
-          </Text>
-        </View>
-        <View>
-          <AppIcon
-            onPress={() => console.log("search")}
-            rippleColor={colors.black}
-            icon={{
-              name: "search-line",
-              size: "25",
-              color: colors.black,
-            }}
-          />
-        </View>
-      </View>
-    );
-  };
-
   return (
     <Stack.Navigator
       screenOptions={({ navigation, route }) => ({
         headerStyle: styles.header,
         headerTitle: () => (
-          <HeaderTitle navigation={navigation} route={route} />
+          <View style={styles.headerContainer}>
+            <View style={styles.headerContainerLeft}>
+              {navigation.dangerouslyGetState().routes.length === 1 && (
+                <AppIcon
+                  onPress={() => navigation.openDrawer()}
+                  style={{ marginRight: 10 }}
+                  rippleColor={colors.black}
+                  icon={{
+                    name: "menu-2-fill",
+                    size: "30",
+                    color: colors.black,
+                  }}
+                />
+              )}
+              {navigation.dangerouslyGetState().routes.length > 1 && (
+                <AppIcon
+                  onPress={() => navigation.goBack()}
+                  style={{ marginRight: 10 }}
+                  rippleColor={colors.black}
+                  icon={{
+                    name: "arrow-left-line",
+                    size: "24",
+                    color: colors.black,
+                  }}
+                />
+              )}
+              <Text style={styles.headerTitle}>
+                {route.params ? route.params.mnemonic.title : route.name}
+              </Text>
+            </View>
+            <View>
+              <AppIcon
+                onPress={() =>
+                  navigation.navigate("HomeStack", {
+                    screen: "Search",
+                  })
+                }
+                rippleColor={colors.black}
+                icon={{
+                  name: "search-line",
+                  size: "25",
+                  color: colors.black,
+                }}
+              />
+            </View>
+          </View>
         ),
         headerLeft: null,
         gestureDirection: "vertical",

@@ -6,6 +6,7 @@ import ReportMnemonic from "../screens/ReportMnemonic";
 import ReportUser from "../screens/ReportUser";
 import UserTap from "./UserTap";
 import AppStack from "./AppStack";
+import SearchScreen from "../screens/SearchScreen";
 
 const Stack = createStackNavigator();
 
@@ -13,6 +14,7 @@ function HomeStack(props) {
   return (
     <AppStack stack={Stack}>
       <Stack.Screen name="Home" component={HomeScreen} />
+      <Stack.Screen name="Search" component={SearchScreen} />
       <Stack.Screen name="MnemonicScreen" component={MnemonicScreen} />
       <Stack.Screen name="Report Mnemonic" component={ReportMnemonic} />
       <Stack.Screen name="Report User" component={ReportUser} />

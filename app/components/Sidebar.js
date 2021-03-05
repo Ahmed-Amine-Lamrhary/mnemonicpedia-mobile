@@ -2,11 +2,12 @@ import React from "react";
 import { View, StyleSheet, Text, StatusBar } from "react-native";
 import colors from "../utility/colors";
 import AppTouchable from "./AppTouchable";
+import config from "../utility/config";
 
 function Sidebar({ navigation, state }) {
   return (
     <View style={styles.container}>
-      <Text style={styles.logo}>Mnemonicpedia</Text>
+      <Text style={styles.logo}>{config.brand}</Text>
 
       <View style={styles.routes}>
         {state.routes.map(({ name }) => (

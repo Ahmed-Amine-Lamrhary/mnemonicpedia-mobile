@@ -7,6 +7,7 @@ import AppButton from "./AppButton";
 import colors from "../utility/colors";
 import Container from "./Container";
 import AppSeparator from "./AppSeparator";
+import { getMnemonics } from "../api/mnemonic";
 
 const mnemonicsData = [
   {
@@ -188,7 +189,7 @@ const mnemonicsData = [
   },
 ];
 
-function Mnemonics(props) {
+function Mnemonics({ query }) {
   const [mnemonics, setMnemonics] = useState([]);
   const [reachEnd, setReachEnd] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -203,40 +204,28 @@ function Mnemonics(props) {
     setIsRefreshing(true);
     setLoading(true);
 
-    setTimeout(() => {
-      setMnemonics(mnemonicsData);
+    const finalQuery = { ...query, ...filter };
+    const { search, load } = filter;
+
+    if (!load) {
+      setReachEnd(false);
+      setMnemonics([]);
+    }
+    setLoading(true);
+
+    try {
+      const { data } = await getMnemonics(finalQuery);
+      if (!load) setMnemonics(data);
+      else setMnemonics([...mnemonics, ...data]);
+
+      if (data.length === 0) setReachEnd(true);
+    } catch (error) {
+      console.error(error);
+      setReachEnd(true);
+    } finally {
       setLoading(false);
-      setIsRefreshing(false);
-    }, 2000);
-
-    // const finalQuery = { ...query, ...filter };
-    // const { search, load } = filter;
-
-    // if (!load) {
-    //   setReachEnd(false);
-    //   setMnemonics([]);
-    // }
-    // setLoading(true);
-
-    // try {
-    //   const { data } = await getMnemonics(finalQuery);
-    //   if (!load) setMnemonics(data);
-    //   else setMnemonics([...mnemonics, ...data]);
-
-    //   history.push(
-    //     `?${stringify({
-    //       search: search !== "" ? generateUrl(search) : undefined,
-    //     })}`
-    //   );
-
-    //   if (data.length === 0) setReachEnd(true);
-    // } catch (error) {
-    //   console.error(error);
-    //   setReachEnd(true);
-    // } finally {
-    //   setLoading(false);
-    //   if (load) window.scrollTo(0, document.body.scrollHeight);
-    // }
+      // if (load) window.scrollTo(0, document.body.scrollHeight);
+    }
   };
 
   const loadMore = () => {
