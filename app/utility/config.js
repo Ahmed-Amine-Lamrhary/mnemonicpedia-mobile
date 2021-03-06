@@ -1,5 +1,5 @@
 const config = Object.freeze({
-  api: "http://127.0.0.1:8000",
+  api: "http://192.168.1.3:8000",
   brand: "Mnemonicpedia",
 });
 

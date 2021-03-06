@@ -3,209 +3,22 @@ import { View, TextInput, StyleSheet, FlatList } from "react-native";
 import Mnemonic from "../components/Mnemonic";
 import Loading from "../components/Loading";
 import Nothing from "../components/Nothing";
-import AppButton from "./AppButton";
-import colors from "../utility/colors";
-import Container from "./Container";
 import AppSeparator from "./AppSeparator";
 import { getMnemonics } from "../api/mnemonic";
-
-const mnemonicsData = [
-  {
-    _id: {
-      $oid: "6011d740b157a22b48ce4ede",
-    },
-    isPublished: true,
-    likes: [],
-    categories: ["60107036ccf8a13720c82f41", "60214a39015f8443c0cd3efe"],
-    title: "Inspiration for New Projects Can Be Found",
-    content: "test test test",
-    author: {
-      $oid: "6005768d61f1a14c04582570",
-    },
-    dateCreated: {
-      $date: "2021-01-27T21:12:32.658Z",
-    },
-  },
-  {
-    _id: {
-      $oid: "6015b15e34a9793fdc70c3f7",
-    },
-    isPublished: true,
-    likes: [],
-    categories: [
-      {
-        $oid: "60107036ccf8a13720c82f41",
-      },
-      {
-        $oid: "601071da5ccb201fd4b24f90",
-      },
-    ],
-    title: "My new one",
-    content: "mikasa armin eren sasha",
-    author: {
-      $oid: "601599b79893d022b0c43c94",
-    },
-    dateCreated: {
-      $date: "2021-01-30T19:19:58.107Z",
-    },
-  },
-  {
-    _id: {
-      $oid: "6015b902a3bb691f10dd8cd1",
-    },
-    isPublished: true,
-    likes: [],
-    categories: [
-      {
-        $oid: "60107036ccf8a13720c82f41",
-      },
-      {
-        $oid: "601071da5ccb201fd4b24f90",
-      },
-    ],
-    title: "Hello world",
-    content: "Hello world Hello world Hello world",
-    author: {
-      $oid: "601599b79893d022b0c43c94",
-    },
-    dateCreated: {
-      $date: "2021-01-30T19:52:34.322Z",
-    },
-  },
-  {
-    _id: {
-      $oid: "6015b902a3bb691f10dd8cd2",
-    },
-    isPublished: true,
-    likes: [],
-    categories: [
-      {
-        $oid: "60107036ccf8a13720c82f41",
-      },
-      {
-        $oid: "601071da5ccb201fd4b24f90",
-      },
-    ],
-    title: "Hello world",
-    content: "Hello world Hello world Hello world",
-    author: {
-      $oid: "601599b79893d022b0c43c94",
-    },
-    dateCreated: {
-      $date: "2021-01-30T19:52:34.754Z",
-    },
-  },
-  {
-    _id: {
-      $oid: "6015b903a3bb691f10dd8cd3",
-    },
-    isPublished: true,
-    likes: [],
-    categories: [
-      {
-        $oid: "60107036ccf8a13720c82f41",
-      },
-      {
-        $oid: "601071da5ccb201fd4b24f90",
-      },
-    ],
-    title: "Hello world",
-    content: "Hello world Hello world Hello world",
-    author: {
-      $oid: "601599b79893d022b0c43c94",
-    },
-    dateCreated: {
-      $date: "2021-01-30T19:52:35.235Z",
-    },
-  },
-  {
-    _id: {
-      $oid: "6015b903a3bb691f10dd8cd4",
-    },
-    isPublished: true,
-    likes: [],
-    categories: [
-      {
-        $oid: "60107036ccf8a13720c82f41",
-      },
-      {
-        $oid: "601071da5ccb201fd4b24f90",
-      },
-    ],
-    title: "Hello world",
-    content: "Hello world Hello world Hello world",
-    author: {
-      $oid: "601599b79893d022b0c43c94",
-    },
-    dateCreated: {
-      $date: "2021-01-30T19:52:35.235Z",
-    },
-  },
-  {
-    _id: {
-      $oid: "6015b903a3bb691f10dd8cd5",
-    },
-    isPublished: true,
-    likes: [],
-    categories: [
-      {
-        $oid: "60107036ccf8a13720c82f41",
-      },
-      {
-        $oid: "601071da5ccb201fd4b24f90",
-      },
-    ],
-    title: "Hello world",
-    content: "Hello world Hello world Hello world",
-    author: {
-      $oid: "601599b79893d022b0c43c94",
-    },
-    dateCreated: {
-      $date: "2021-01-30T19:52:35.235Z",
-    },
-  },
-  {
-    _id: {
-      $oid: "6015b903a3bb691f10dd8cd6",
-    },
-    isPublished: true,
-    likes: [],
-    categories: [
-      {
-        $oid: "60107036ccf8a13720c82f41",
-      },
-      {
-        $oid: "601071da5ccb201fd4b24f90",
-      },
-    ],
-    title: "Hello world",
-    content: "Hello world Hello world Hello world",
-    author: {
-      $oid: "601599b79893d022b0c43c94",
-    },
-    dateCreated: {
-      $date: "2021-01-30T19:52:35.235Z",
-    },
-  },
-];
+import AppButton from "./AppButton";
+import colors from "../utility/colors";
 
 function Mnemonics({ query }) {
   const [mnemonics, setMnemonics] = useState([]);
   const [reachEnd, setReachEnd] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [value, setValue] = useState("");
+  // const [value, setValue] = useState("");
   const [filter, setFilter] = useState({});
   const [isRefreshing, setIsRefreshing] = useState(false);
 
-  // const history = useHistory();
-  // const location = useLocation();
-
   const handleGet = async () => {
-    setIsRefreshing(true);
-    setLoading(true);
-
     const finalQuery = { ...query, ...filter };
-    const { search, load } = filter;
+    const { load } = filter;
 
     if (!load) {
       setReachEnd(false);
@@ -224,28 +37,31 @@ function Mnemonics({ query }) {
       setReachEnd(true);
     } finally {
       setLoading(false);
+      setIsRefreshing(false);
       // if (load) window.scrollTo(0, document.body.scrollHeight);
     }
   };
 
   const loadMore = () => {
-    // const { page: currentPage } = filter;
-    // const newFilter = { ...filter, page: currentPage + 1, load: true };
-    // setFilter(newFilter);
+    const { page: currentPage } = filter;
+    const newFilter = { ...filter, page: currentPage + 1, load: true };
+    setFilter(newFilter);
   };
 
   // const userId = getMyId();
 
-  // useEffect(() => {
-  //   if ("search" in filter) {
-  //     setValue(filter.search);
-  //     handleGet();
-  //   }
-  // }, [filter]);
+  useEffect(() => {
+    // if ("search" in filter) {
+    //   setValue(filter.search);
+    //   handleGet();
+    // }
+    handleGet();
+  }, [filter]);
 
   useEffect(() => {
-    // let { search = "", page = 1 } = parse(location.search) || {};
-    // setFilter({ search, page: parseInt(page), load: false });
+    setFilter({
+      page: 1,
+    });
     handleGet();
   }, []);
 
@@ -280,6 +96,17 @@ function Mnemonics({ query }) {
 
   return (
     <View>
+      {!loading && !reachEnd && (
+        <View>
+          <AppButton
+            onPress={loadMore}
+            icon={{ name: "restart-line", color: colors.white }}
+          >
+            Load More
+          </AppButton>
+        </View>
+      )}
+
       {/* <View>
         <TextInput
           style={styles.searchBar}
@@ -297,7 +124,7 @@ function Mnemonics({ query }) {
           renderItem={({ item }) => (
             <Mnemonic mnemonic={item} onLike={handleLike} />
           )}
-          keyExtractor={(index) => index._id.$oid.toString()}
+          keyExtractor={(index) => index._id.toString()}
           refreshing={isRefreshing}
           onRefresh={() => handleGet()}
           ItemSeparatorComponent={() => <AppSeparator />}
@@ -306,17 +133,6 @@ function Mnemonics({ query }) {
       {mnemonics.length === 0 && !loading && <Nothing model="mnemonic" />}
 
       <Loading loading={loading} />
-
-      {/* {!loading && !reachEnd && (
-        <View>
-          <AppButton
-            onPress={loadMore}
-            icon={{ name: "restart-line", color: colors.white }}
-          >
-            Load More
-          </AppButton>
-        </View>
-      )} */}
     </View>
   );
 }

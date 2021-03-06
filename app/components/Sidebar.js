@@ -10,8 +10,9 @@ function Sidebar({ navigation, state }) {
       <Text style={styles.logo}>{config.brand}</Text>
 
       <View style={styles.routes}>
-        {state.routes.map(({ name }) => (
+        {state.routes.map(({ index, name }) => (
           <AppTouchable
+            key={index}
             onPress={() => navigation.navigate(name)}
             style={styles.route}
           >

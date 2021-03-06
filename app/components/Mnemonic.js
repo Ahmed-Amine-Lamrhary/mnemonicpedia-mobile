@@ -50,62 +50,12 @@ function Mnemonic({ mnemonic, onLike }) {
       }
     >
       <View>
-        {/* <View style={styles.options}>
-          <AppButton
-            onPress={() =>
-              navigation.navigate("HomeStack", {
-                screen: "User",
-              })
-            }
-            styleBtn={styles.authorButton}
-            styleText={styles.authorText}
-          >
-            Author name
-          </AppButton>
-
-          <View style={styles.optionsBlock}>
-            {userId === author._id && (
-            <Text>
-              Edit
-              <i className="ri-pencil-line"></i>
-            </Text>
-          )}
-
-            <AppIcon
-              style={styles.icon}
-              rippleColor="red"
-              icon={{
-                name: "pencil-line",
-                size: "18",
-                color: colors.grey,
-              }}
-            />
-
-            <AppIcon
-              style={styles.icon}
-              onPress={() =>
-                navigation.navigate("HomeStack", {
-                  screen: "Report Mnemonic",
-                  params: { mnemonic },
-                })
-              }
-              rippleColor="red"
-              icon={{
-                name: "flag-2-line",
-                size: "18",
-                color: colors.grey,
-              }}
-            />
-          </View>
-        </View> */}
-
         <View style={styles.body}>
           <View>
             <Image
               style={styles.image}
               source={{
-                uri:
-                  "https://images.pexels.com/photos/2492097/pexels-photo-2492097.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+                uri: "https://via.placeholder.com/300x300",
               }}
             />
           </View>
